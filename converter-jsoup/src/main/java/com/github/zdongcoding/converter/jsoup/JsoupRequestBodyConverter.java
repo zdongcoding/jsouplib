@@ -6,11 +6,11 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Converter;
 
-final class DocumentRequestBodyConverter<T> implements Converter<T, RequestBody> {
-    static final DocumentRequestBodyConverter<Object> INSTANCE = new DocumentRequestBodyConverter<>();
+final class JsoupRequestBodyConverter<T> implements Converter<T, RequestBody> {
+    static final JsoupRequestBodyConverter<Object> INSTANCE = new JsoupRequestBodyConverter<>();
     private static final MediaType MEDIA_TYPE = MediaType.parse("text/plain; charset=UTF-8");
 
-    private DocumentRequestBodyConverter() {
+    private JsoupRequestBodyConverter() {
     }
 
     @Override

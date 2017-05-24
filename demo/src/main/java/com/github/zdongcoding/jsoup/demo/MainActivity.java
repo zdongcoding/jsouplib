@@ -5,25 +5,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.github.zdongcoding.converter.jsoup.DocumentConverterFactory;
-import com.github.zdongcoding.jsoup.JsoupReader;
-import com.github.zdongcoding.jsoup.JsoupReaderContext;
+import com.github.zdongcoding.converter.jsoup.JSOUP;
+import com.github.zdongcoding.converter.jsoup.JsoupConverterFactory;
 import com.github.zdongcoding.jsoup.demo.home.HomeBean;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-import rx.Observable;
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final TextView view= (TextView) findViewById(R.id.text);
         api = new Retrofit.Builder().baseUrl(baseUri)
-                .addConverterFactory(DocumentConverterFactory.create())
+                .addConverterFactory(JsoupConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build().create(Api.class);
@@ -68,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        api.getPag1("").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<HomeBean>() {
+        api.getPag1("").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<JSOUP<HomeBean>>() {
             @Override
             public void onCompleted() {
 
@@ -76,12 +66,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onError(Throwable e) {
-
+                Log.e("zoudong", "onError====" + "e = [" + e + "]");
             }
 
             @Override
-            public void onNext(HomeBean homeBean) {
-                view.setText(homeBean.toString());
+            public void onNext(JSOUP<HomeBean> homeBean) {
+                view.setText(homeBean.data.toString());
             }
         });
     }

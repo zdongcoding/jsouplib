@@ -1,8 +1,8 @@
 package com.github.zdongcoding.jsoup.demo;
 
+import com.github.zdongcoding.converter.jsoup.JSOUP;
 import com.github.zdongcoding.jsoup.demo.home.HomeBean;
 
-import org.jsoup.nodes.Document;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -13,5 +13,5 @@ public interface Api {
     Observable<String> getPage(@Path(value = "url",encoded = true) String url);
 
     @GET("{url}")
-    Observable<HomeBean> getPag1(@Path(value = "url",encoded = true) String url);
+    Observable<JSOUP<HomeBean>> getPag1(@Path(value = "url",encoded = true) String url);
 }
