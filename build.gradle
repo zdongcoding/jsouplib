@@ -8,6 +8,8 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0-alpha1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -23,4 +25,27 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+ext{
+    bintrayRepo = 'maven'
+    bintrayName = 'jsoup'
+
+    publishedGroupId = 'com.github.zdongcoding'
+    libraryName = 'jsoup'
+    artifact = 'jsoup'
+    maturity ='Stable'
+    libraryDescription = 'base on jsoup   Automatically parsed into bean'
+
+    siteUrl = 'https://github.com/zdongcoding/jsoup'
+    gitUrl = 'https://github.com/zdongcoding/jsoup.git'
+    issueUrl='https://github.com/zdongcoding/jsoup/issues'
+    libraryVersion = '0.1.0'
+    alllabels = ['android','jsoup']
+    developerId = 'zdongcoding'
+    developerName = 'zoudong'
+    developerEmail = 'zoudongq1990@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
 }

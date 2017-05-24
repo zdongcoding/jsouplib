@@ -8,6 +8,7 @@ import com.github.zdongcoding.jsoup.data.TypeLiteral;
 import com.github.zdongcoding.jsoup.kit.AnalysisDecoder;
 import com.github.zdongcoding.jsoup.kit.AnnotationAnalysis;
 
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
@@ -37,7 +38,18 @@ public class JsoupReader {
         T val = context.read(clazz, new JsoupReaderContext(elements, classDescriptor.clazz_anno));
         return val;
     }
-
+    public static final <T> T deserialize(String document, Class<T> clazz) {
+        JsoupReader context = jsp.get();
+        ClassDescriptor classDescriptor = ClassReader.getClassDescriptor(clazz, true);
+        Document parse = Jsoup.parse(document);
+        if (classDescriptor.clazz_anno == null)
+            throw new RuntimeException(clazz + " you must used  once Annotation ");
+//        Log.e("zoudong", "deserialize: "+classDescriptor.clazz_anno[0].toString() );
+        Elements elements = AnnotationAnalysis.analysis(parse.children(), classDescriptor.clazz_anno);
+//        Log.e("zoudong","---->" +elements.html());
+        T val = context.read(clazz, new JsoupReaderContext(elements, classDescriptor.clazz_anno));
+        return val;
+    }
     @SuppressWarnings("unchecked")
     public final <T> T read(Class<T> clazz, JsoupReaderContext iterator) {
         return (T) AnalysisDecoder.getDecoder(TypeLiteral.create(clazz).getDecoderCacheKey(), clazz).decode(iterator);

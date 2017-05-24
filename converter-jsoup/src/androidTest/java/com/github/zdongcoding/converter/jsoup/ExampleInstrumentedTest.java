@@ -1,4 +1,4 @@
-package com.github.zdongcoding.jsoup;
+package com.github.zdongcoding.converter.jsoup;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.github.zdongcoding.jsoup", appContext.getPackageName());
+        assertEquals("com.github.zdongcoding.converter.jsoup.test", appContext.getPackageName());
     }
 }

@@ -2,14 +2,19 @@ package com.github.zdongcoding.jsoup.demo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.github.zdongcoding.converter.jsoup.DocumentConverterFactory;
 import com.github.zdongcoding.jsoup.JsoupReader;
 import com.github.zdongcoding.jsoup.JsoupReaderContext;
 import com.github.zdongcoding.jsoup.demo.home.HomeBean;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -32,13 +37,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final TextView view= (TextView) findViewById(R.id.text);
         api = new Retrofit.Builder().baseUrl(baseUri)
-//                .addConverterFactory(DocumentConverterFactory.create())
+                .addConverterFactory(DocumentConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build().create(Api.class);
         api.getPage("").flatMap(new Func1<String, Observable<HomeBean>>() {
             @Override
             public Observable<HomeBean> call(String s) {
+                Type genericSuperclass = this.getClass().getGenericSuperclass();
+                if (genericSuperclass instanceof ParameterizedType) {
+                    Type type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
+                    Log.e("zoudong", ": "+type);
+                }
                 return Observable.just(JsoupReader.deserialize(Jsoup.parse(s), HomeBean.class));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<HomeBean>() {

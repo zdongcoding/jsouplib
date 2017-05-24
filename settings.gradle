@@ -1,1 +1,1 @@
-include ':jsoup', ':demo'
+include ':jsoup', ':demo', ':converter-jsoup'

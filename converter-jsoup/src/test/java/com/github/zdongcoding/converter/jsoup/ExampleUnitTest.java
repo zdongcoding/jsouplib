@@ -1,4 +1,4 @@
-package com.github.zdongcoding.jsoup;
+package com.github.zdongcoding.converter.jsoup;
 
 import org.junit.Test;
 
