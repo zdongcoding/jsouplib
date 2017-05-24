@@ -13,5 +13,5 @@ public interface Api {
     Observable<String> getPage(@Path(value = "url",encoded = true) String url);
 
     @GET("{url}")
-    Observable<Document> getPag1(@Path(value = "url",encoded = true) String url);
+    Observable<HomeBean> getPag1(@Path(value = "url",encoded = true) String url);
 }

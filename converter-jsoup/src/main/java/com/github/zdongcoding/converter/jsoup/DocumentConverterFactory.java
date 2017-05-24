@@ -1,6 +1,5 @@
 package com.github.zdongcoding.converter.jsoup;
 
-import org.jsoup.nodes.Document;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
@@ -26,17 +25,11 @@ public class DocumentConverterFactory  extends Converter.Factory{
 
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
-        if (type==Document.class) {
-            return  DocumentResponseBodyConverter.INSTANCE;
-        }
-        return super.responseBodyConverter(type, annotations, retrofit);
+            return  new DocumentResponseBodyConverter((Class) type);
     }
 
     @Override
     public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
-        if (type==Document.class) {
-            return  DocumentRequestBodyConverter.INSTANCE;
-        }
         return super.requestBodyConverter(type, parameterAnnotations, methodAnnotations, retrofit);
     }
 

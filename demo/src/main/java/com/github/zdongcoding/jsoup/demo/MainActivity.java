@@ -41,17 +41,34 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build().create(Api.class);
-        api.getPage("").flatMap(new Func1<String, Observable<HomeBean>>() {
-            @Override
-            public Observable<HomeBean> call(String s) {
-                Type genericSuperclass = this.getClass().getGenericSuperclass();
-                if (genericSuperclass instanceof ParameterizedType) {
-                    Type type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
-                    Log.e("zoudong", ": "+type);
-                }
-                return Observable.just(JsoupReader.deserialize(Jsoup.parse(s), HomeBean.class));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<HomeBean>() {
+//        api.getPage("").flatMap(new Func1<String, Observable<HomeBean>>() {
+//            @Override
+//            public Observable<HomeBean> call(String s) {
+//                Type genericSuperclass = this.getClass().getGenericSuperclass();
+//                if (genericSuperclass instanceof ParameterizedType) {
+//                    Type type = ((ParameterizedType) genericSuperclass).getActualTypeArguments()[0];
+//                    Log.e("zoudong", ": "+type);
+//                }
+//                return Observable.just(JsoupReader.deserialize(Jsoup.parse(s), HomeBean.class));
+//            }
+//        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<HomeBean>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//
+//            }
+//
+//            @Override
+//            public void onNext(HomeBean homeBean) {
+//                view.setText(homeBean.toString());
+//            }
+//        });
+
+        api.getPag1("").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<HomeBean>() {
             @Override
             public void onCompleted() {
 
