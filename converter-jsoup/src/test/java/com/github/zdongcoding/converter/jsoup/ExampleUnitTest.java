@@ -1,6 +1,14 @@
 package com.github.zdongcoding.converter.jsoup;
 
+import android.util.Log;
+
+import com.github.zdongcoding.jsoup.kit.ReflectKit;
+
 import org.junit.Test;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -12,6 +20,13 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        ArrayList<String> objects = new ArrayList<String>(){};
+        JSOUP<String> jsoup = new JSOUP<>("sgs");
+        Type type = ReflectKit.chooseImpl(jsoup.getClass());
+        if (type instanceof ParameterizedType) {
+            System.out.println(((ParameterizedType) type).getActualTypeArguments()[0]);
+        }
+        System.out.println(type);
     }
+
 }

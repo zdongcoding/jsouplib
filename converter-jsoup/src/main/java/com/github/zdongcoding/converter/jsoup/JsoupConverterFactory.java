@@ -34,7 +34,7 @@ public class JsoupConverterFactory extends Converter.Factory{
                 Type type1 = ReflectKit.chooseImpl(type);
                 if (type1 instanceof ParameterizedType) {
                     Type type2 = ((ParameterizedType) type1).getActualTypeArguments()[0];
-                    return new JsoupResponseBodyConverter((Class)type2);
+                    return new JsoupResponseBodyConverter<>((Class)type2);
                 }
 
             }
