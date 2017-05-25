@@ -5,6 +5,8 @@ import com.github.zdongcoding.jsoup.annotation.Select;
 import com.github.zdongcoding.jsoup.kit.ReflectKit;
 
 
+import org.jsoup.nodes.Document;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -30,27 +32,8 @@ public class JsoupConverterFactory extends Converter.Factory{
 
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
-        if (type instanceof ParameterizedType) {
-            if (((ParameterizedType) type).getRawType() == JSOUP.class) {
-                Type type1 = ReflectKit.chooseImpl(type);
-                if (type1 instanceof ParameterizedType) {
-                    Type type2 = ((ParameterizedType) type1).getActualTypeArguments()[0];
-                    return new JsoupResponseBodyConverter<>((Class) type2);
-                }
 
-            }
-        } else {
-            Class aClass= (Class) type;
-            if (aClass.getAnnotations()!=null) {
-                for (Annotation annotation : aClass.getAnnotations()) {
-                    if (annotation instanceof Select) {
-                        return new JsoupResponseBody2Converter<>((Class) type);
-                    }
-                }
-            }
-
-        }
-        return  null;
+        return JsoupResponseBodyConverter.create(type);
     }
 
     @Override
