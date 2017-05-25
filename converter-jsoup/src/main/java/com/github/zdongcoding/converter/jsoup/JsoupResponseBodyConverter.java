@@ -22,7 +22,7 @@ final class JsoupResponseBodyConverter<T> implements Converter<ResponseBody, JSO
     @Override
     public JSOUP<T> convert(ResponseBody value) throws IOException {
         try {
-            return new JSOUP(JsoupReader.deserialize(Jsoup.parse(value.string()), (Class<T>) mT));
+            return new JSOUP<T>(JsoupReader.deserialize(Jsoup.parse(value.string()), (Class<T>) mT));
         }finally {
             value.close();
         }

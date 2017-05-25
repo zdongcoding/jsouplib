@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        api.getPag1("").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<JSOUP<HomeBean>>() {
+        api.getPag1("").subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<HomeBean>() {
             @Override
             public void onCompleted() {
 
@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onNext(JSOUP<HomeBean> homeBean) {
-                view.setText(homeBean.data.toString());
+            public void onNext(HomeBean homeBean) {
+                view.setText(homeBean.toString());
             }
         });
     }

@@ -1,6 +1,5 @@
 package com.github.zdongcoding.jsoup.demo;
 
-import com.github.zdongcoding.converter.jsoup.JSOUP;
 import com.github.zdongcoding.jsoup.demo.home.HomeBean;
 
 
@@ -13,5 +12,7 @@ public interface Api {
     Observable<String> getPage(@Path(value = "url",encoded = true) String url);
 
     @GET("{url}")
-    Observable<JSOUP<HomeBean>> getPag1(@Path(value = "url",encoded = true) String url);
+    Observable<HomeBean> getPag1(@Path(value = "url",encoded = true) String url);  // 第一种方式  T 必须有Select 的 annotation
+//    @GET("{url}")
+//    Observable<JSOUP<HomeBean>> getPag1(@Path(value = "url",encoded = true) String url); // 第二种方式
 }
