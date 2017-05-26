@@ -1,16 +1,13 @@
 package com.github.zdongcoding.converter.jsoup;
 
-import android.util.Log;
-
-import com.github.zdongcoding.jsoup.kit.ReflectKit;
+import com.github.zdg.jsoup.JSOUP;
+import com.github.zdg.jsoup.kit.ReflectKit;
 
 import org.junit.Test;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
