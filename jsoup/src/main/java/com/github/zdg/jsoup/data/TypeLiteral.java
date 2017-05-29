@@ -1,6 +1,8 @@
 package com.github.zdg.jsoup.data;
 
 
+import com.github.zdg.jsoup.exception.JsoupReaderException;
+
 import java.lang.reflect.GenericArrayType;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
