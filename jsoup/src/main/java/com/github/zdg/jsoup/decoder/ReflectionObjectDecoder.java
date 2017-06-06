@@ -91,8 +91,6 @@ public class ReflectionObjectDecoder {
                     return desc.ctor.ctor.newInstance(args);
                 }
             }
-
-            throw  new JsoupReaderException("construction not onAttachView");
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

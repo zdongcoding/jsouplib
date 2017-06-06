@@ -31,11 +31,11 @@ public class AnnotationAnalysis {
                 if (!TextUtils.isEmpty(select)) {
                     els = els.select(select.trim());
                 } else {
-                    Log.e("zoudong", ": "+els.html());
+//                    Log.e("zoudong", ": "+els.html());
                 }
 
             } catch (Exception e) {
-                Log.e("zoudong", "an"+an.toString());
+//                Log.e("zoudong", "an"+an.toString());
                 e.printStackTrace();
             }
         }
