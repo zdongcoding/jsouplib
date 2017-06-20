@@ -25,7 +25,32 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'org.jsoup:jsoup:1.10.3'
     compile project(':Ajsoup')
     testCompile 'junit:junit:4.12'
 }
+
+ext{
+    bintrayRepo = 'maven'
+    bintrayName = 'Converter-Ajsoup'
+
+    publishedGroupId = 'com.github.zdongcoding'
+    libraryName = 'Converter-Ajsoup'
+    artifact = 'Converter-Ajsoup'
+    artifact_Id = 'converter-ajsoup'
+    maturity ='Stable'
+    libraryDescription = 'retrofit  jsoup Converter '
+
+    siteUrl = 'https://github.com/zdongcoding/jsouplib'
+    gitUrl = 'https://github.com/zdongcoding/jsouplib.git'
+    issueUrl='https://github.com/zdongcoding/jsouplib/issues'
+    libraryVersion = '0.1.0'
+    alllabels = ['android','retrofit','jsoup','converter']
+    developerId = 'zdongcoding'
+    developerName = 'zoudong'
+    developerEmail = 'zoudongq1990@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+//apply from:'../Config.gradle'
