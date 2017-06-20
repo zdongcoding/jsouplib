@@ -2,7 +2,7 @@ package com.github.zdongcoding.jsoup.demo.home;
 
 
 
-import com.github.zdongcoding.jsoup.annotation.Select;
+import com.github.zdg.ajsoup.annotation.Select;
 import com.github.zdongcoding.jsoup.demo.WebBean;
 
 import java.util.List;

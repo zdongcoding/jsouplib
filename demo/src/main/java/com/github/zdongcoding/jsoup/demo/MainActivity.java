@@ -5,8 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.github.zdongcoding.converter.jsoup.JSOUP;
-import com.github.zdongcoding.converter.jsoup.JsoupConverterFactory;
+import com.github.zdg.ajsoup.AJsoupConverterFactory;
 import com.github.zdongcoding.jsoup.demo.home.HomeBean;
 
 import retrofit2.Retrofit;
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final TextView view= (TextView) findViewById(R.id.text);
         api = new Retrofit.Builder().baseUrl(baseUri)
-                .addConverterFactory(JsoupConverterFactory.create())
+                .addConverterFactory(AJsoupConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build().create(Api.class);
