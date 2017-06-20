@@ -1,6 +1,8 @@
 package com.github.zdg.ajsoup;
 
 
+import android.util.Log;
+
 import com.github.zdg.ajsoup.data.ClassDescriptor;
 import com.github.zdg.ajsoup.data.ClassReader;
 import com.github.zdg.ajsoup.data.TypeLiteral;
@@ -17,7 +19,7 @@ import org.jsoup.select.Elements;
  */
 
 public class AJsoupReader {
-
+    public static final boolean isDebug=false;
     public static ThreadLocal<AJsoupReader> jsp = new ThreadLocal<AJsoupReader>() {
         @Override
         protected AJsoupReader initialValue() {
@@ -31,9 +33,7 @@ public class AJsoupReader {
 
         if (classDescriptor.clazz_anno == null)
             throw new RuntimeException(clazz + " you must used  once Annotation ");
-//        Log.e("zoudong", "deserialize: "+classDescriptor.clazz_anno[0].toString() );
         Elements elements = AnnotationAnalysis.analysis(document.children(), classDescriptor.clazz_anno);
-//        Log.e("zoudong","---->" +elements.html());
         T val = context.read(clazz, new AJsoupReaderContext(elements, classDescriptor.clazz_anno));
         return val;
     }
@@ -43,9 +43,9 @@ public class AJsoupReader {
         Document parse = Jsoup.parse(document);
         if (classDescriptor.clazz_anno == null)
             throw new RuntimeException(clazz + " you must used  once Annotation ");
-//        Log.e("zoudong", "deserialize: "+classDescriptor.clazz_anno[0].toString() );
+       if (isDebug) Log.e("AJsoupReader", "deserialize: "+classDescriptor.clazz_anno[0].toString() );
         Elements elements = AnnotationAnalysis.analysis(parse.children(), classDescriptor.clazz_anno);
-//        Log.e("zoudong","---->" +elements.html());
+        if (isDebug)  Log.e("AJsoupReader","---->" +elements.html());
         T val = context.read(clazz, new AJsoupReaderContext(elements, classDescriptor.clazz_anno));
         return val;
     }
