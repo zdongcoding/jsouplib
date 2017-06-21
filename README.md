@@ -2,13 +2,26 @@
     
 [![Platform](https://img.shields.io/badge/platform-Android-yellow.svg)](https://www.android.com)
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
+[![author](https://img.shields.io/badge/%E4%BD%9C%E8%80%85-zoudong-blue.svg)](https://github.com/zdongcoding)
 
 > AJsoup 模块是快速将html 转换成bean  类似gson转换 
 
 > 依赖 [jsoup](https://github.com/jhy/jsoup)
 
 > **使用前提你了解jsoup并且了解[jsoup的Select](https://jsoup.org/apidocs/index.html?org/jsoup/select/Selector.html)**
- 
+
+**Gradle**
+>  compile 'com.github.zdongcoding:ajsoup:0.1.0'
+
+**Maven**
+```
+<dependency>
+  <groupId>com.github.zdongcoding</groupId>
+  <artifactId>ajsoup</artifactId>
+  <version>0.1.0</version>
+  <type>pom</type>
+</dependency>
+```
 
 使用方法如下：
 ```
@@ -36,6 +49,19 @@
 # AJsoup---->Converter-Ajsoup   
 
 > 使用过Retrofit  一看这个名字就知道做什么的
+
+**Gradle**
+> compile 'com.github.zdongcoding:converter-ajsoup:0.1.0'
+
+**Maven**
+```
+<dependency>
+  <groupId>com.github.zdongcoding</groupId>
+  <artifactId>converter-ajsoup</artifactId>
+  <version>0.1.0</version>
+  <type>pom</type>
+</dependency>
+```
 
 使用方法：
 ```  
