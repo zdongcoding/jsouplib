@@ -36,6 +36,8 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
-    compile project(':Ajsoup')
-    compile project(path: ':Converter-Ajsoup')
+//    compile project(':Ajsoup')
+//    compile 'com.github.zdongcoding:ajsoup:0.1.0'
+//    compile 'com.github.zdongcoding:converter-ajsoup:0.1.0'
+    compile project(path: ':converter-ajsoup')
 }

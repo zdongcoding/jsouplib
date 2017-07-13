@@ -18,7 +18,6 @@ install {
                         url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                     }
                 }
-                artifactId artifact_Id
                 developers {
                     developer {
                         id developerId       //填写的一些基本信息

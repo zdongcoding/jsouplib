@@ -1,15 +1,18 @@
 apply plugin: 'com.android.library'
 
 
-
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
+
+
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
+
     }
     buildTypes {
         release {
@@ -20,26 +23,29 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'org.jsoup:jsoup:1.10.3'
-
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile project(':ajsoup')
+//    compile 'com.github.zdongcoding:Ajsoup:0.1.0'
+    testCompile 'junit:junit:4.12'
 }
+
 ext{
     bintrayRepo = 'maven'
-    bintrayName = 'Ajsoup'
+    bintrayName = 'Converter-Ajsoup'
 
     publishedGroupId = 'com.github.zdongcoding'
-    libraryName = 'Ajsoup'
-    artifact = 'Ajsoup'
-    artifact_Id = 'ajsoup'
+    libraryName = 'converter-ajsoup'
+    artifact = 'converter-ajsoup'
+    artifact_Id = 'converter-ajsoup'
     maturity ='Stable'
-    libraryDescription = 'base on jsoup   Automatically parsed into bean'
+    libraryDescription = 'retrofit  jsoup Converter '
 
     siteUrl = 'https://github.com/zdongcoding/jsouplib'
     gitUrl = 'https://github.com/zdongcoding/jsouplib.git'
     issueUrl='https://github.com/zdongcoding/jsouplib/issues'
-    libraryVersion = '0.1.0'
-    alllabels = ['android','jsoup']
+    libraryVersion = '0.2.0'
+    alllabels = ['android','retrofit','jsoup','converter']
     developerId = 'zdongcoding'
     developerName = 'zoudong'
     developerEmail = 'zoudongq1990@gmail.com'
@@ -48,4 +54,4 @@ ext{
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
     allLicenses = ["Apache-2.0"]
 }
-//apply from:'../Config.gradle'
+apply from:'../Config.gradle'
