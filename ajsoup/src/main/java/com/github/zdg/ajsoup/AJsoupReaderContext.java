@@ -2,7 +2,6 @@ package com.github.zdg.ajsoup;
 
 import android.text.TextUtils;
 
-
 import com.github.zdg.ajsoup.annotation.Select;
 import com.github.zdg.ajsoup.data.Resource;
 import com.github.zdg.ajsoup.kit.AnnotationAnalysis;
@@ -129,12 +128,21 @@ public class AJsoupReaderContext {
     }
 
     public void deserializeChild(Resource target, Object parant) {
-        Elements select = AnnotationAnalysis.analysis(elements, target.annotations);
-        Object deserialize = target.deserialize(select);
-        setToBinding(parant, target, deserialize);
+        int anno = target.annotations != null ? target.annotations.length : 0;
+        for (int i = 0; i < anno; i++) {
+            if (target.annotations[i] instanceof Select) {
+                Elements select = AnnotationAnalysis.analysis(elements, target.annotations);
+                Object deserialize = target.deserialize(select);
+                setToBinding(parant, target, deserialize);
+                break;
+            }
+        }
     }
 
     private void setToBinding(Object obj, Resource resource, Object slect) {
+        if (obj == null) {
+            return;
+        }
         try {
             if (resource.field != null) {
                 resource.field.set(obj, slect);
