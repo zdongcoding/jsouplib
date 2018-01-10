@@ -4,7 +4,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '26.0.3'
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 25
@@ -21,14 +21,28 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'org.jsoup:jsoup:1.10.3'
+    compile 'org.jsoup:jsoup:1.11.2'
 
+}
+task makeJar(type: Copy) {
+    //删除存在的
+    delete 'build/libs/ajsoup.jar'
+    //设置拷贝的文件
+    from('build/intermediates/bundles/release/')
+    //打进jar包后的文件目录
+    into('build/libs/')
+    //将classes.jar放入build/libs/目录下
+    //include ,exclude参数来设置过滤
+    //（我们只关心classes.jar这个文件）
+    include('classes.jar')
+    //重命名
+    rename ('classes.jar', 'ajsoup.jar')
 }
 ext{
     bintrayRepo = 'maven'
     bintrayName = 'Ajsoup'
 
-    publishedGroupId = 'com.github.zdongcoding'
+    publishedGroupId = 'com.zdg'
     libraryName = 'ajsoup'
     artifact = 'ajsoup'
     maturity ='Stable'
@@ -37,7 +51,7 @@ ext{
     siteUrl = 'https://github.com/zdongcoding/jsouplib'
     gitUrl = 'https://github.com/zdongcoding/jsouplib.git'
     issueUrl='https://github.com/zdongcoding/jsouplib/issues'
-    libraryVersion = '0.3.0'
+    libraryVersion = '1.0.0-beta1'
     alllabels = ['android','jsoup']
     developerId = 'zdongcoding'
     developerName = 'zoudong'
@@ -47,5 +61,4 @@ ext{
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
     allLicenses = ["Apache-2.0"]
 }
-//apply from:'../Config.gradle'
 //apply from: 'https://raw.githubusercontent.com/zdongcoding/bintrayhelper/master/SimpleBintray.gradle'

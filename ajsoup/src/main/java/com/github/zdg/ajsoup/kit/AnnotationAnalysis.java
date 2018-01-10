@@ -1,11 +1,11 @@
 package com.github.zdg.ajsoup.kit;
 
 
-import android.text.TextUtils;
 
 
 import com.github.zdg.ajsoup.annotation.Select;
 
+import org.jsoup.helper.StringUtil;
 import org.jsoup.select.Elements;
 
 import java.lang.annotation.Annotation;
@@ -27,7 +27,7 @@ public class AnnotationAnalysis {
         if (an instanceof Select) {
             try {
                 String select = ((Select) an).select();
-                if (!TextUtils.isEmpty(select)) {
+                if (!StringUtil.isBlank(select)) {
                     els = els.select(select.trim());
                 }
 

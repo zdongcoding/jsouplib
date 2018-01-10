@@ -1,7 +1,7 @@
 package com.github.zdg.ajsoup;
 
 
-import android.util.Log;
+
 
 import com.github.zdg.ajsoup.data.ClassDescriptor;
 import com.github.zdg.ajsoup.data.ClassReader;
@@ -43,9 +43,9 @@ public class AJsoupReader {
         Document parse = Jsoup.parse(document);
         if (classDescriptor.clazz_anno == null)
             throw new RuntimeException(clazz + " you must used  once Annotation ");
-       if (isDebug) Log.e("AJsoupReader", "deserialize: "+classDescriptor.clazz_anno[0].toString() );
+       if (isDebug) System.out.println("deserialize: "+classDescriptor.clazz_anno[0].toString() );
         Elements elements = AnnotationAnalysis.analysis(parse.children(), classDescriptor.clazz_anno);
-        if (isDebug)  Log.e("AJsoupReader","---->" +elements.html());
+        if (isDebug) System.out.println("---->" +elements.html());
         T val = context.read(clazz, new AJsoupReaderContext(elements, classDescriptor.clazz_anno));
         return val;
     }

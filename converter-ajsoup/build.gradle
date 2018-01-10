@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '26.0.2'
+    buildToolsVersion '26.0.3'
 
 
     defaultConfig {
@@ -26,7 +26,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile project(':ajsoup')
-//    compile 'com.github.zdongcoding:Ajsoup:0.1.0'
     testCompile 'junit:junit:4.12'
 }
 
@@ -34,7 +33,7 @@ ext{
     bintrayRepo = 'maven'
     bintrayName = 'Converter-Ajsoup'
 
-    publishedGroupId = 'com.github.zdongcoding'
+    publishedGroupId = 'com.zdg'
     libraryName = 'converter-ajsoup'
     artifact = 'converter-ajsoup'
     artifact_Id = 'converter-ajsoup'
@@ -44,7 +43,7 @@ ext{
     siteUrl = 'https://github.com/zdongcoding/jsouplib'
     gitUrl = 'https://github.com/zdongcoding/jsouplib.git'
     issueUrl='https://github.com/zdongcoding/jsouplib/issues'
-    libraryVersion = '0.3.0'
+    libraryVersion = '1.0.0-beta1'
     alllabels = ['android','retrofit','jsoup','converter']
     developerId = 'zdongcoding'
     developerName = 'zoudong'

@@ -1,7 +1,7 @@
 package com.github.zdg.ajsoup.decoder;
 
 
-import android.text.TextUtils;
+
 
 
 import com.github.zdg.ajsoup.AJsoupReaderContext;
@@ -9,6 +9,7 @@ import com.github.zdg.ajsoup.data.TypeLiteral;
 import com.github.zdg.ajsoup.exception.AJsoupReaderException;
 import com.github.zdg.ajsoup.kit.AnalysisDecoder;
 
+import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
@@ -43,7 +44,7 @@ class ReflectionMapDecoder implements Decoder {
             return null;
         }
         String key = context.resource.attr(0);
-        if (TextUtils.isEmpty(key)) {
+        if (StringUtil.isBlank(key)) {
             throw new AJsoupReaderException("请设置 attr 表示map 中的 key");
         }
         for (Element element : context.elements) {

@@ -1,11 +1,11 @@
 package com.github.zdg.ajsoup;
 
-import android.text.TextUtils;
 
 import com.github.zdg.ajsoup.annotation.Select;
 import com.github.zdg.ajsoup.data.Resource;
 import com.github.zdg.ajsoup.kit.AnnotationAnalysis;
 
+import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
@@ -66,7 +66,7 @@ public class AJsoupReaderContext {
                 return element != null && element.hasText();
             }
         }
-        if (!TextUtils.isEmpty(select.attr())) {
+        if (!StringUtil.isBlank(select.attr())) {
             for (Element element : elements) {
                 return element != null && element.hasAttr(select.attr());
             }
@@ -113,7 +113,7 @@ public class AJsoupReaderContext {
                 }
             }
         }
-        if (!TextUtils.isEmpty(select.attr())) {
+        if (!StringUtil.isBlank(select.attr())) {
             for (Element element : elements) {
                 if (element != null && element.hasAttr(select.attr())) {
                     return element.attr(select.attr());
