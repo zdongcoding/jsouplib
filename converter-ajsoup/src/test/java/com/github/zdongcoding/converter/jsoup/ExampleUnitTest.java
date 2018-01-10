@@ -1,7 +1,7 @@
 package com.github.zdongcoding.converter.jsoup;
 
-import com.github.zdg.ajsoup.AJSOUP;
-import com.github.zdg.ajsoup.kit.ReflectKit;
+import com.zdg.converter.ajsoup.AJSOUP;
+import com.zdg.ajsoup.kit.ReflectKit;
 
 import org.junit.Test;
 

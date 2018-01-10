@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.github.zdg.ajsoup.AJsoupConverterFactory;
+import com.zdg.converter.ajsoup.AJsoupConverterFactory;
 import com.github.zdongcoding.jsoup.demo.home.HomeBean;
 
 import retrofit2.Retrofit;

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
 
-import com.github.zdg.ajsoup.annotation.Select;
+import com.zdg.ajsoup.annotation.Select;
 
 
 /**

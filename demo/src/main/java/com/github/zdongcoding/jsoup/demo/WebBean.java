@@ -1,7 +1,7 @@
 package com.github.zdongcoding.jsoup.demo;
 
 
-import com.github.zdg.ajsoup.annotation.Select;
+import com.zdg.ajsoup.annotation.Select;
 
 /**
  * Created by zoudong on 2017/3/5.
